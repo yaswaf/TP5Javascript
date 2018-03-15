@@ -1,38 +1,33 @@
-
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width=800
-canvas.height=600
-var drawing=new Drawing()
-var pencil=new Pencil(ctx,drawing,canvas)
+canvas.width = 800
+canvas.height = 600
+var drawing = new Drawing(ctx)
+var pencil = new Pencil(ctx, drawing, canvas)
 // Code temporaire pour tester le DnD
-var cnv=new DnD(canvas,pencil);
+var cnv = new DnD(canvas, pencil);
 ctx.fillStyle = '#F0F0F0'; // set canvas' background color
 ctx.fillRect(0, 0, canvas.width, canvas.height);  // now fill the canvas
-var drap=0;
+var drap = 0;
 function mouseDown(event) {
     cnv.pression(event)
-    drap=1
+    drap = 1
 
 }
 
 function mouseMove(event) {
-		if(drap==1)
-		{
-			cnv.deplacement(event)
-		}
-   
+    if (drap == 1) {
+        cnv.deplacement(event)
+    }
+
 }
 
 function mouseUp(event) {
-		drap=0;
-		cnv.relachement(event)
+    drap = 0;
+    cnv.relachement(event)
 
 }
-
-
-
 
 
 // Code temporaire pour tester l'affiche de la vue
